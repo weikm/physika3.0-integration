@@ -1,0 +1,15 @@
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/context.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/init.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/input.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/monitor.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/vulkan.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/window.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/win32_init.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/win32_joystick.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/win32_monitor.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/win32_time.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/win32_thread.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/win32_window.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/wgl_context.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/egl_context.obj
+D:/MyProj/Minato/extern/glfw-3.3.0/src/glfw.dir/MinSizeRel/osmesa_context.obj

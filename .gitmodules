@@ -1,0 +1,4 @@
+[submodule "thirdparty/entt"]
+	path = thirdparty/entt
+	url = https://gitee.com/PhysikaTeam/entt.git
+	# url = https://github.com/skypjack/entt.git
