@@ -4,19 +4,27 @@
  * @description: A sample of using Physika
  * @version    : 1.0
  */
+//#define STB_IMAGE_IMPLEMENTATION
+//#include "framework/world.hpp"
+//#include "framework/scene.hpp"
+//#include "framework/object.hpp"
+//#include "pbd_granular/interface/granular_particle_solver.hpp"
+//#include <gl_particle_render/glWindow/glWidGet.h>
+//#include <gl_particle_render/renderer/cuParticleRenderer.h>
+//#include <iostream>
+//#include <random>
+//#include <vector_types.h>
+//#include <vector_functions.hpp>
+//#include "stb_image.h"
 #define STB_IMAGE_IMPLEMENTATION
-#include "framework/world.hpp"
-#include "framework/scene.hpp"
-#include "framework/object.hpp"
-#include "pbd_granular/interface/granular_particle_solver.hpp"
+#include "pbd_granular/interface/granular_particle_solver_integration.hpp"
 #include <gl_particle_render/glWindow/glWidGet.h>
 #include <gl_particle_render/renderer/cuParticleRenderer.h>
 #include <iostream>
 #include <random>
-#include <vector_types.h>
+//#include <vector_types.h>
 #include <vector_functions.hpp>
 #include "stb_image.h"
-
 using namespace Physika;
 
 
@@ -87,55 +95,152 @@ std::vector<float> loadHeightFieldFromImage(const std::string& image_path, int h
 
 int main()
 {
-    auto scene_a = World::instance().createScene();
-    auto obj_a    = World::instance().createObject();
-    obj_a->addComponent<GranularParticleComponent>();
-    auto  component       = obj_a->getComponent<GranularParticleComponent>();
-    std::vector<float3> init_pos;
-    component->addInstance(0.3, init_pos);
-    component->addInstance(0.3,   { -30.f, -20.f, -15.f }, { 45.f, 3.f, 30.f },  { 0.f, 0.f, 0.f });
-    component->addInstance(0.24,  { -8.f, -12.2f, -8.f },  { 16.f, 4.8f, 16.f }, { 0.f, 0.f, 0.f });
-    component->addInstance(0.1875,{ -8.f, -7.4f, -8.f },   { 8.f, 9.6f, 16.f },  { 0.f, 0.f, 0.f });
-    component->addInstance(0.15,  { 0.f, -7.4f, -8.f },    { 8.f, 9.6f, 16.f },  { 0.f, 0.f, 0.f });
-    component->addInstance(0.375, { 15.f, -20.f, -15.f },  { 12.f, 7.8f, 30.f }, { 0.f, 0.f, 0.f });
-    component->addInstance(0.6,   { -11.f, -17.f, -15.f }, { 22.f, 4.8f, 30.f }, { 0.f, 0.f, 0.f });
-    
-    
+    //auto scene_a = World::instance().createScene();
+    //auto obj_a    = World::instance().createObject();
+    //obj_a->addComponent<GranularParticleComponent>();
+    //auto  component       = obj_a->getComponent<GranularParticleComponent>();
+    //std::vector<float3> init_pos;
+    //component->addInstance(0.3, init_pos);
+    //component->addInstance(0.3,   { -30.f, -20.f, -15.f }, { 45.f, 3.f, 30.f },  { 0.f, 0.f, 0.f });
+    //component->addInstance(0.24,  { -8.f, -12.2f, -8.f },  { 16.f, 4.8f, 16.f }, { 0.f, 0.f, 0.f });
+    //component->addInstance(0.1875,{ -8.f, -7.4f, -8.f },   { 8.f, 9.6f, 16.f },  { 0.f, 0.f, 0.f });
+    //component->addInstance(0.15,  { 0.f, -7.4f, -8.f },    { 8.f, 9.6f, 16.f },  { 0.f, 0.f, 0.f });
+    //component->addInstance(0.375, { 15.f, -20.f, -15.f },  { 12.f, 7.8f, 30.f }, { 0.f, 0.f, 0.f });
+    //component->addInstance(0.6,   { -11.f, -17.f, -15.f }, { 22.f, 4.8f, 30.f }, { 0.f, 0.f, 0.f });
+    //
+    //
 
-    auto granular_solver = World::instance().createSolver<GranularParticleSolver>();
-    GranularParticleSolver::SolverConfig granular_config;
+    //auto granular_solver = World::instance().createSolver<GranularParticleSolver>();
+    //GranularParticleSolver::SolverConfig granular_config;
+    //granular_config.m_dt         = 1.f / 60.f;
+    //granular_config.m_total_time = 20.f;
+    //granular_config.m_write2ply    = true;
+    //granular_solver->config(granular_config);
+    //scene_a->addObject(obj_a);
+    //granular_solver->attachObject(obj_a);
+
+    //// set solver boundary
+    //granular_solver->setSleepThreshold(0.032);
+    //std::vector<float> world_boundaries = {-60, -20, -20, 40, 20, 20};
+    //granular_solver->setWorldBoundary(-60, -20, -20, 40, 20, 20);
+    //float unit_height  = 0.3;
+    //int   height_x_num = static_cast<int>((world_boundaries[3] - world_boundaries[0]) / unit_height);
+    //int   height_z_num = static_cast<int>((world_boundaries[5] - world_boundaries[2]) / unit_height);
+    //
+    ////The absolute path to the cost location needs to be modified
+    //std::vector<float> height = loadHeightFieldFromImage("E:/project_code/physika3.0_release0.1.0_20240613/Physika/examples/granular_sample/heightmap.png", height_x_num, height_z_num, 5,-25);
+
+    ////set HF in granular solver
+    //granular_solver->setHeightField(height, unit_height, height_x_num, height_z_num);
+    //scene_a->addSolver(granular_solver);
+
+    //std::cout << "numParticles: " << obj_a->getComponent<GranularParticleComponent>()->m_num_particles << std::endl;
+
+    //// if GUI
+    //bool gui_test = true;
+    //if (gui_test)
+    //{
+    //    unsigned int screenWidth  = 1440;
+    //    unsigned int screenHeight = 900;
+    //    int          status;
+    //    GLWidGet     test_window(screenWidth, screenHeight, "Granular", 3, 3, status);
+
+    //    if (status != 0)
+    //    {
+    //        return -1;
+    //    }
+
+    //    /*
+    //    * 1. Create a renderer or more.
+    //    */
+    //    // Positions ptr, color_attrs ptr, num, particle_radius, color type
+    //    float*       pos_ptr         = obj_a->getComponent<GranularParticleComponent>()->m_device_pos;
+    //    void*        color_ptr       = obj_a->getComponent<GranularParticleComponent>()->m_device_pos;
+    //    unsigned int num_particles   = obj_a->getComponent<GranularParticleComponent>()->m_num_particles;
+    //    float        particle_radius ;
+    //    int          color_type      = attr_for_color::PSCALE;  // Alternative. See enum 'attr_for_color' and 'ColorConfig'
+    //    int          pos_dim         = 4;                    // set 4 if a freaky 'float4' type is used for position_ptr.
+
+    //    particle_radius = 0.2;
+    //    // Renderer.
+    //    std::shared_ptr<Renderer> drawElasticParticles =
+    //        std::make_shared<CUParticleRenderer>(pos_ptr, color_ptr, num_particles, particle_radius, color_type, pos_dim, "rainbow.png", "shader1.vs", "shader1.fs");
+
+    //    /*
+    //    * 2. Put renderer into renderer list
+    //    */
+    //    // Renderer List
+    //    std::vector<std::shared_ptr<Renderer>> drawList;
+    //    drawList.push_back(drawElasticParticles);
+
+    //    /*
+    //    * 3. Run simulation
+    //    */
+    //    double total_time = granular_config.m_total_time;
+    //    double cur_time   = 0.0;
+    //    double dt         = granular_config.m_dt;
+    //    while (cur_time < total_time && test_window.windowCheck())
+    //    {
+    //        double dt = (cur_time + granular_config.m_dt <= total_time) ? granular_config.m_dt : total_time - cur_time;
+    //        cur_time += dt;
+    //        granular_config.m_dt = dt;
+    //        granular_solver->step();
+    //        // Draw particles every time step
+    //        test_window.windowUpdate(drawList);
+    //    }
+    //    test_window.windowEnd();
+    //}
+    //else
+    //{
+    //    World::instance().run();
+    //}
+    //return 0;
+
+   //auto scene_a = World::instance().createScene();
+    //auto obj_a    = World::instance().createObject();
+    //obj_a->addComponent<GranularParticleComponentIntegration>();
+    //auto  component       = obj_a->getComponent<GranularParticleComponentIntegration>();
+    GranularParticleComponentIntegration* component = new GranularParticleComponentIntegration;
+    std::vector<glm::vec3>                init_pos;
+    //component->addInstance(0.3, init_pos);
+    component->addInstance(0.3, { -30.f, -20.f, -15.f }, { 45.f, 3.f, 30.f }, { 0.f, 0.f, 0.f });
+    component->addInstance(0.24, { -8.f, -12.2f, -8.f }, { 16.f, 4.8f, 16.f }, { 0.f, 0.f, 0.f });
+    component->addInstance(0.1875, { -8.f, -7.4f, -8.f }, { 8.f, 9.6f, 16.f }, { 0.f, 0.f, 0.f });
+    component->addInstance(0.15, { 0.f, -7.4f, -8.f }, { 8.f, 9.6f, 16.f }, { 0.f, 0.f, 0.f });
+    component->addInstance(0.375, { 15.f, -20.f, -15.f }, { 12.f, 7.8f, 30.f }, { 0.f, 0.f, 0.f });
+    component->addInstance(0.6, { -11.f, -17.f, -15.f }, { 22.f, 4.8f, 30.f }, { 0.f, 0.f, 0.f });
+    //component->initialize();
+
+    GranularParticleSolverIntegration* granular_solver = new GranularParticleSolverIntegration;
+
+    //granular_solver->initialize();
+    GranularParticleSolverIntegration::SolverConfig granular_config;
     granular_config.m_dt         = 1.f / 60.f;
-    granular_config.m_total_time = 20.f;
-    granular_config.m_write2ply    = true;
+    granular_config.m_total_time = 2000.f;
+    granular_config.m_write2ply  = true;
     granular_solver->config(granular_config);
-    scene_a->addObject(obj_a);
-    granular_solver->attachObject(obj_a);
+    //scene_a->addObject(obj_a);
+    //granular_solver->attachObject(obj_a);
+    granular_solver->setComponent(component);
+
+    granular_solver->setInitialize();
 
     // set solver boundary
     granular_solver->setSleepThreshold(0.032);
-    std::vector<float> world_boundaries = {-60, -20, -20, 40, 20, 20};
+    std::vector<float> world_boundaries = { -60, -20, -20, 40, 20, 20 };
     granular_solver->setWorldBoundary(-60, -20, -20, 40, 20, 20);
     float unit_height  = 0.3;
     int   height_x_num = static_cast<int>((world_boundaries[3] - world_boundaries[0]) / unit_height);
     int   height_z_num = static_cast<int>((world_boundaries[5] - world_boundaries[2]) / unit_height);
-    //std::random_device                    rd;
-    //std::mt19937                          gen(rd());
-    //std::uniform_real_distribution<float> dis(-5,0);
-    //std::vector<float>                    height(height_x_num * height_z_num);
-    //for (int i = 0; i < height_x_num * height_z_num; i++)
-    //{
-    //    height[i] = world_boundaries[1]+dis(gen);
-    //    //printf("%f\n", height[i]);
-    //}
-    
+
     //The absolute path to the cost location needs to be modified
-    std::vector<float> height = loadHeightFieldFromImage("E:/project_code/physika3.0_release0.1.0_20240613/Physika/examples/granular_sample/heightmap.png", height_x_num, height_z_num, 5,-25);
+    std::vector<float> height = loadHeightFieldFromImage("E:/project_code/physika3.0_release0.1.0_20240613/Physika/examples/granular_integration_sample/heightmap.png", height_x_num, height_z_num, 5, -25);
 
     //set HF in granular solver
     granular_solver->setHeightField(height, unit_height, height_x_num, height_z_num);
-    scene_a->addSolver(granular_solver);
+    //scene_a->addSolver(granular_solver);
 
-    std::cout << "numParticles: " << obj_a->getComponent<GranularParticleComponent>()->m_num_particles << std::endl;
+    std::cout << "numParticles: " << component->m_num_particles << std::endl;
 
     // if GUI
     bool gui_test = true;
@@ -155,12 +260,12 @@ int main()
         * 1. Create a renderer or more.
         */
         // Positions ptr, color_attrs ptr, num, particle_radius, color type
-        float*       pos_ptr         = obj_a->getComponent<GranularParticleComponent>()->m_device_pos;
-        void*        color_ptr       = obj_a->getComponent<GranularParticleComponent>()->m_device_pos;
-        unsigned int num_particles   = obj_a->getComponent<GranularParticleComponent>()->m_num_particles;
-        float        particle_radius ;
-        int          color_type      = attr_for_color::PSCALE;  // Alternative. See enum 'attr_for_color' and 'ColorConfig'
-        int          pos_dim         = 4;                    // set 4 if a freaky 'float4' type is used for position_ptr.
+        float*       pos_ptr       = component->m_device_pos;
+        void*        color_ptr     = component->m_device_pos;
+        unsigned int num_particles = component->m_num_particles;
+        float        particle_radius;
+        int          color_type = attr_for_color::PSCALE;  // Alternative. See enum 'attr_for_color' and 'ColorConfig'
+        int          pos_dim    = 4;                       // set 4 if a freaky 'float4' type is used for position_ptr.
 
         particle_radius = 0.2;
         // Renderer.
@@ -185,7 +290,7 @@ int main()
             double dt = (cur_time + granular_config.m_dt <= total_time) ? granular_config.m_dt : total_time - cur_time;
             cur_time += dt;
             granular_config.m_dt = dt;
-            granular_solver->step();
+            granular_solver->step();  //step
             // Draw particles every time step
             test_window.windowUpdate(drawList);
             // Or set some conditions:
@@ -197,9 +302,11 @@ int main()
         }
         test_window.windowEnd();
     }
-    else
-    {
-        World::instance().run();
-    }
+    //else
+    //{
+    //    World::instance().run();
+    //}
     return 0;
+
+
 }
